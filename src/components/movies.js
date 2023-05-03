@@ -1,7 +1,9 @@
-import { useQuery } from '@apollo/client';
 import React, { useEffect, useState } from 'react';
+import styles from "../styles/movies.module.css";
+import { useQuery } from '@apollo/client';
 import { GET_ALL_FILMS } from '../graphql/queries';
 import MovieInfo from './movieInfo';
+import sinceReleased from '../utils/functions';
 
 const Movies = () => {
   const [movieInfoModal, setMovieInfoModal] = useState(null);
@@ -16,23 +18,14 @@ const Movies = () => {
     return <p>Error : {error.message}</p>;
   }
 
-return (<>
-    <h1 style={{
-      color: "black",
-      padding: "10px",
-      fontFamily: "Arial",
-      textAlign: "center"
-    }}>Star Wars Movies</h1>
-    <table style={{
-      borderSpacing: "30px",
-      paddingLeft: "300px",
-      color: 'black', 
-      lineHeight: 2,  
-      }}>
+  let functions = require('../utils/functions');
+  
+
+  return <div className={styles.Movies}>
+    <h1 >Star Wars Movies</h1>
+    <table>
       <thead>
-        <tr style={{
-          color: "red",
-        }}>
+        <tr>
           <th >Title</th>
           <th>Released</th>
           <th>Director</th>
@@ -40,25 +33,17 @@ return (<>
           
         </tr>
       </thead>
-      <tbody style={{
-        textAlign: "center"
-      }}>
+      <tbody>
         {data.allFilms.films.map(film => <tr key={film.id}>
           <td onClick={() => setMovieInfoModal(film.id)}>{film.title}</td>
           <td>{film.releaseDate}</td>
           <td>{film.director}</td>
-          {/* <td>{convertDate(film.releaseDate)}</td> */}
-          {/* <td>{film.releaseDate.planets.map(film => ( {releaseDate}  
-        
-      ))}  </td> */}
-
+          <td>{functions.sinceReleased(new Date(film.releaseDate))}</td>
         </tr>)}
       </tbody>
     </table>
 
     {movieInfoModal && <MovieInfo id={movieInfoModal} close={() => setMovieInfoModal(null)} />}
-    
-  </>);
+  </div>;
 }
-
 export default Movies;
