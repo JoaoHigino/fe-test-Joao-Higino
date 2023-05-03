@@ -1,7 +1,6 @@
 import { useQuery } from '@apollo/client';
 import React from 'react';
 import { GET_FILM_INFO } from '../graphql/queries';
-
 const MovieInfo = ({ id, close }) => {
 
   const { loading, error, data } = useQuery(GET_FILM_INFO, {
@@ -18,14 +17,37 @@ const MovieInfo = ({ id, close }) => {
     return <p>Error : {error.message}</p>;
   }
 
-
-  return <div>
+  return <div style={{
+    position: "fixed",
+    left: "50%",
+    top: "44%",
+    transform: "translate(-50%, -50%)",
+    backgroundColor:"black",
+    color:"white",
+    maxHeight:"100%",
+    padding: "25px",
+    float: "top",
+    fontFamily: "cursive"
+    }}>
     <span onClick={close}>Close</span>
-    <h2>{data.film.title}</h2>
-    <h3>Opening Crawl: <br></br>{data.film.openingCrawl}</h3>
-    <h3>Planets in the movie:<br></br>
+    <h2 style={{
+      color: "red",
+      textAlign: "center"
+      }}>{data.film.title}
+    </h2>
+    <h3 style={{
+      color: "whitesmoke",
+      textAlign: "center"
+      }}>{data.film.openingCrawl}
+    </h3>
+    <h3 style={{
+      color: "red",
+      textAlign: "center"
+      }}>Planets in the movie:<br></br>
       {data.film.planetConnection.planets.map(film => (  
-        <li>  
+        <li style={{
+          fontSize: "15px"
+        }} >  
           {film.name}  
         </li>  
       ))}  
