@@ -1,0 +1,12 @@
+.App {
+    font-family: 'Roboto Mono', monospace;
+    background-image: url("./image/starwars8.jpg;");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+    min-height: 100vh;
+}
+
+.Main {
+    padding-top: 110px;
+}

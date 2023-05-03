@@ -1,0 +1,28 @@
+.h1 {
+    color: "black";
+    padding: "10px";
+    font-family: "Arial";
+    text-align: "center";
+    font-size: "35px"
+  }
+.table {
+    border-Spacing: "30px";
+    padding-left: "300px";
+    color: 'black';
+    line-height: 2,
+}
+
+.tr {
+    color: "red";
+    font-Size: "25px"
+}
+
+.tr {
+    color: "red";
+    font-Size: "25px"
+  }
+
+.tbody {
+    text-align: "center";
+    font-Size: "20px"  
+}
