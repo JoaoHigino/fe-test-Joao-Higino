@@ -5,8 +5,14 @@ const Dotenv = require('dotenv-webpack');
 module.exports = {
   mode: 'development',
   entry: path.join(__dirname, 'src', 'index.js'),
+  devServer: {
+    allowedHosts: 'all',
+  },
   output: {
     path:path.resolve(__dirname, 'dist'),
+  },
+  resolve: {
+    extensions: ['.ts', '.js'],
   },
   module: {
     rules: [
