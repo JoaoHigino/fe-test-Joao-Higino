@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import styles from "../styles/movies.module.css";
 import { useQuery } from '@apollo/client';
 import { GET_ALL_FILMS } from '../graphql/queries';
 import MovieInfo from './movieInfo';
@@ -19,26 +18,53 @@ const Movies = () => {
   }
 
   let functions = require('../utils/functions');
-  
 
-  return <div className={styles.Movies}>
-    <h1 >Star Wars Movies</h1>
-    <table>
+
+  return <div>
+    <h1 style={{
+      color: "#fff",
+      padding: "10px",
+      fontFamily: "Arial",
+      textAlign: "center",
+      fontSize: "35px"
+    }}>Star Wars Movies</h1>
+    <table style={{
+      borderSpacing: "30px",
+      paddingLeft: "300px",
+      color: "#fff",
+      lineHeight: 2,
+      fontFamily: "sans-serif",
+      borderColor: "red",
+    }}>
       <thead>
-        <tr>
+        <tr style={{
+          color: "#fff",
+          fontSize: "25px"
+        }}>
           <th >Title</th>
           <th>Released</th>
           <th>Director</th>
           <th>Years Since Released</th>
-          
+
         </tr>
       </thead>
-      <tbody>
+      <tbody style={{
+        textAlign: "center",
+        fontSize: "20px"
+      }}>
         {data.allFilms.films.map(film => <tr key={film.id}>
           <td onClick={() => setMovieInfoModal(film.id)}>{film.title}</td>
-          <td>{film.releaseDate}</td>
+          <td style={{
+            color: "#fff",
+            textAlign: "center",
+            fontSize: "20px"
+          }}>{film.releaseDate}</td>
           <td>{film.director}</td>
-          <td>{functions.sinceReleased(new Date(film.releaseDate))}</td>
+          <td style={{
+            color: "#fff",
+            textAlign: "center",
+            fontSize: "20px"
+          }}>{functions.sinceReleased(new Date(film.releaseDate))}</td>
         </tr>)}
       </tbody>
     </table>

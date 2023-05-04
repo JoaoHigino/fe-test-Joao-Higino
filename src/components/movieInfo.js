@@ -1,6 +1,7 @@
-import { useQuery } from '@apollo/client';
 import React from 'react';
+import { useQuery } from '@apollo/client';
 import { GET_FILM_INFO } from '../graphql/queries';
+
 const MovieInfo = ({ id, close }) => {
 
   const { loading, error, data } = useQuery(GET_FILM_INFO, {
@@ -20,37 +21,37 @@ const MovieInfo = ({ id, close }) => {
   return <div style={{
     position: "fixed",
     left: "50%",
-    top: "44%",
+    top: "38%",
     transform: "translate(-50%, -50%)",
-    backgroundColor:"black",
-    color:"white",
-    maxHeight:"100%",
+    backgroundColor: "black",
+    color: "white",
+    maxheight: "100%",
     padding: "25px",
     float: "top",
     fontFamily: "cursive"
-    }}>
+  }}>
     <span onClick={close}>Close</span>
     <h2 style={{
       color: "red",
       textAlign: "center"
-      }}>{data.film.title}
-    </h2>
+    }}>
+      {data.film.title}</h2>
     <h3 style={{
       color: "whitesmoke",
       textAlign: "center"
-      }}>{data.film.openingCrawl}
-    </h3>
+    }}>
+      {data.film.openingCrawl}</h3>
     <h3 style={{
       color: "red",
       textAlign: "center"
-      }}>Planets in the movie:<br></br>
-      {data.film.planetConnection.planets.map(film => (  
-        <li style={{
-          fontSize: "15px"
-        }} >  
-          {film.name}  
-        </li>  
-      ))}  
+    }}>Planets in the movie:<br></br>
+      {data.film.planetConnection.planets.map(film => (
+      <li style={{
+        fontsize: "15px",
+        color: "white"
+       }}> {film.name}
+      </li>
+      ))}
     </h3>
   </div>;
 
